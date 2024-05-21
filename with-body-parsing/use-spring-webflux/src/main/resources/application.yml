@@ -31,4 +31,4 @@ server-info:
   region: japan
 
 server:
-  port: 8081
+  port: 8082
