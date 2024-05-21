@@ -29,6 +29,6 @@ public class ProxyController {
         String token = tokenService.extractToken(body);
         String issuer = tokenService.getIssuerFromToken(token);
 
-
+        return routeService.route(issuer, headers, body);
     }
 }

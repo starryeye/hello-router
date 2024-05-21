@@ -22,7 +22,7 @@ public class TokenService {
                 return new String(Base64.getDecoder().decode(keyValue[1]));
             }
         }
-        throw new RuntimeException("JWT token not found in request body");
+        throw new RuntimeException("JWT token not found in request body"); // todo, 4xx
     }
 
     public String getIssuerFromToken(String token) {
@@ -30,7 +30,7 @@ public class TokenService {
             JWT jwt = JWTParser.parse(token);
             return jwt.getJWTClaimsSet().getIssuer();
         } catch (Exception e) {
-            throw new RuntimeException("Invalid JWT token", e);
+            throw new RuntimeException("Invalid JWT token", e); // todo, 4xx
         }
     }
 }

@@ -25,9 +25,6 @@ public class RouteInfoService {
 
     public Boolean compareUrlByRegion(String url) {
 
-        if(isValidUrl(url) == Boolean.FALSE)
-            throw new IllegalArgumentException("Invalid URL"); // todo, 4xx
-
         return url.equals(getCurrentRegionExternalUrl());
     }
 
@@ -49,7 +46,8 @@ public class RouteInfoService {
         };
     }
 
-    private Boolean isValidUrl(String url) {
+    public Boolean isValidUrl(String url) {
+
         return externalUrls.contains(url);
     }
 }
