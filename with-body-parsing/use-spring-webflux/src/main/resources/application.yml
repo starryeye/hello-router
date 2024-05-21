@@ -1,9 +1,34 @@
-server-info:
-  region: "korea"
+spring:
+  profiles:
+    default: korea
 
 routing-info:
   origin:
-    koreaExternalUrl: "http://localhost:9090"
-    japanExternalUrl: "http://localhost:9091"
-    koreaInternalUrl: "http://localhost:9092"
-    japanInternalUrl: "http://localhost:9093"
+    koreaExternalUrl: http://localhost:8081
+    japanExternalUrl: http://localhost:8082
+    koreaInternalUrl: http://localhost:9091
+    japanInternalUrl: http://localhost:9092
+
+---
+spring:
+  config:
+    activate:
+      on-profile: korea
+
+server-info:
+  region: korea
+
+server:
+  port: 8081
+
+---
+spring:
+  config:
+    activate:
+      on-profile: japan
+
+server-info:
+  region: japan
+
+server:
+  port: 8081
