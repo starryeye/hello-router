@@ -1,0 +1,9 @@
+server-info:
+  region: "korea"
+
+routing-info:
+  origin:
+    koreaExternalUrl: "http://localhost:9090"
+    japanExternalUrl: "http://localhost:9091"
+    koreaInternalUrl: "http://localhost:9092"
+    japanInternalUrl: "http://localhost:9093"
