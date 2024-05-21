@@ -1,6 +1,7 @@
 package dev.practice.usespringwebflux.config;
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.bind.ConstructorBinding;
@@ -11,21 +12,43 @@ import org.springframework.validation.annotation.Validated;
 @Validated
 public class RoutingInfoProperties {
 
-    @NotBlank
-    private final String koreaExternalUrl;
-    @NotBlank
-    private final String japanExternalUrl;
+    @NotNull
+    private final InternalUrls internal;
 
-    @NotBlank
-    private final String koreaInternalUrl;
-    @NotBlank
-    private final String japanInternalUrl;
+    @NotNull
+    private final ExternalUrls external;
 
     @ConstructorBinding
-    public RoutingInfoProperties(String koreaExternalUrl, String japanExternalUrl, String koreaInternalUrl, String japanInternalUrl) {
-        this.koreaExternalUrl = koreaExternalUrl;
-        this.japanExternalUrl = japanExternalUrl;
-        this.koreaInternalUrl = koreaInternalUrl;
-        this.japanInternalUrl = japanInternalUrl;
+    public RoutingInfoProperties(InternalUrls internal, ExternalUrls external) {
+        this.internal = internal;
+        this.external = external;
+    }
+
+    @Getter
+    public static class InternalUrls {
+        @NotBlank
+        private final String korea;
+        @NotBlank
+        private final String japan;
+
+        @ConstructorBinding
+        public InternalUrls(String korea, String japan) {
+            this.korea = korea;
+            this.japan = japan;
+        }
+    }
+
+    @Getter
+    public static class ExternalUrls {
+        @NotBlank
+        private final String korea;
+        @NotBlank
+        private final String japan;
+
+        @ConstructorBinding
+        public ExternalUrls(String korea, String japan) {
+            this.korea = korea;
+            this.japan = japan;
+        }
     }
 }

@@ -4,10 +4,12 @@ spring:
 
 routing-info:
   origin:
-    koreaExternalUrl: http://localhost:8081
-    japanExternalUrl: http://localhost:8082
-    koreaInternalUrl: http://localhost:9091
-    japanInternalUrl: http://localhost:9092
+    external:
+      korea: http://localhost:8081
+      japan: http://localhost:8082
+    internal:
+      korea: http://localhost:9091
+      japan: http://localhost:9092
 
 ---
 spring:

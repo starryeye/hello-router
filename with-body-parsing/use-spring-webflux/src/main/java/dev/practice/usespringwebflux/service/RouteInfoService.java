@@ -19,8 +19,8 @@ public class RouteInfoService {
         this.routingInfoProperties = routingInfoProperties;
         this.serverInfoProperties = serverInfoProperties;
 
-        externalUrls.add(routingInfoProperties.getJapanExternalUrl());
-        externalUrls.add(routingInfoProperties.getKoreaExternalUrl());
+        externalUrls.add(routingInfoProperties.getExternal().getJapan());
+        externalUrls.add(routingInfoProperties.getExternal().getKorea());
     }
 
     public Boolean compareUrlByRegion(String url) {
@@ -31,8 +31,8 @@ public class RouteInfoService {
     public String getCurrentRegionInternalUrl() {
 
         return switch (serverInfoProperties.getRegion()) {
-            case "korea" -> routingInfoProperties.getKoreaInternalUrl();
-            case "japan" -> routingInfoProperties.getJapanInternalUrl();
+            case "korea" -> routingInfoProperties.getInternal().getKorea();
+            case "japan" -> routingInfoProperties.getInternal().getJapan();
             default -> throw new IllegalStateException("Unexpected value: " + serverInfoProperties.getRegion());
         };
     }
@@ -40,8 +40,8 @@ public class RouteInfoService {
     public String getCurrentRegionExternalUrl() {
 
         return switch (serverInfoProperties.getRegion()) {
-            case "korea" -> routingInfoProperties.getKoreaExternalUrl();
-            case "japan" -> routingInfoProperties.getJapanExternalUrl();
+            case "korea" -> routingInfoProperties.getExternal().getKorea();
+            case "japan" -> routingInfoProperties.getExternal().getJapan();
             default -> throw new IllegalStateException("Unexpected value: " + serverInfoProperties.getRegion());
         };
     }
