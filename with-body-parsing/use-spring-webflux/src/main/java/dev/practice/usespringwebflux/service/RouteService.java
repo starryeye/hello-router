@@ -26,12 +26,14 @@ public class RouteService {
 
             String targetUrl = routeInfoService.getCurrentRegionInternalUrl();
 
-            return targetClient.request(targetUrl, headers, body);
+            return targetClient.request(targetUrl + "/request", headers, body);
 
         }else {
             // 2-2. 다르면 요청 url 을 issuer 로 변경하여 전송 + Host 헤더를 issuer 로 변경
 
-            return targetClient.request(issuer, headers, body, issuer);
+            String host = routeInfoService.getHostToConvert(issuer);
+
+            return targetClient.request(issuer + "/proxy/request", headers, body, host);
         }
 
 

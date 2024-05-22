@@ -24,7 +24,7 @@ public class TargetClient {
 
         return webClient
                 .post()
-                .uri(URI.create(targetUrl + "/request"))
+                .uri(URI.create(targetUrl))
                 .headers(
                         httpHeaders -> {
                             httpHeaders.putAll(headers);
