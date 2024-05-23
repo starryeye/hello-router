@@ -1,6 +1,6 @@
 package dev.practice.usespringwebflux.controller;
 
-import dev.practice.usespringwebflux.controller.request.ProxyRequest;
+import dev.practice.usespringwebflux.controller.request.RouteRequest;
 import dev.practice.usespringwebflux.service.RouteService;
 import dev.practice.usespringwebflux.service.TokenService;
 import lombok.RequiredArgsConstructor;
@@ -14,14 +14,14 @@ import reactor.core.publisher.Mono;
 @Controller
 @RequestMapping("/proxy")
 @RequiredArgsConstructor
-public class ProxyController {
+public class RouteController {
 
     private final TokenService tokenService;
     private final RouteService routeService;
 
     @PostMapping(value = "/request", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
     public Mono<ResponseEntity<String>> request(
-            @ModelAttribute ProxyRequest request,
+            @ModelAttribute RouteRequest request,
             @RequestHeader HttpHeaders headers
     ) {
 

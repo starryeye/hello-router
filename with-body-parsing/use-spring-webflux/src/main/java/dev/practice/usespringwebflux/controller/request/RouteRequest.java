@@ -1,6 +1,6 @@
 package dev.practice.usespringwebflux.controller.request;
 
-public record ProxyRequest(
+public record RouteRequest(
         String token
 ) {
 
